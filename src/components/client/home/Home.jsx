@@ -61,26 +61,56 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <div
-                key={product.id}
-                className="bg-transparent p-4 rounded-lg shadow-lg hover:shadow-2xl cursor-pointer transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
-               
-              
+  key={product.id}
+  className="bg-transparent border border-purple-200 p-4 rounded-xl shadow-lg hover:shadow-2xl cursor-pointer transition-all duration-300 transform hover:scale-105 relative"
+  onClick={() => handleProductClick(product)}
+>
+  {/* Ribbon for Top Seller */}
+  <div className="absolute top-4 left-4 bg-yellow-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-md">
+    Top Seller
+  </div>
 
-                onClick={() => handleProductClick(product)}
-              >
-                <div className="relative w-full h-40 mb-4 overflow-hidden rounded-lg" style={{    display: "flex",alignItems: "center",justifyContent: "center"}}>
-                  {/* Improved product image styling */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black opacity-40 rounded-lg" style={{    display: "flex",alignItems: "center",justifyContent: "center",    width: "111px"
-}}></div>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-all duration-300 transform hover:scale-110 rounded-lg"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800">{product.name}</h3>
-                <p className="text-gray-600 mt-2 text-sm">{product.description}</p>
-              </div>
+  {/* Product Image */}
+  <div
+    className="relative w-full h-48 mb-4 overflow-hidden rounded-lg shadow-md"
+    style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+  >
+    <img
+      src={product.image}
+      alt={product.name}
+      className="w-full h-full object-cover transition-all duration-300 transform hover:scale-110 rounded-lg"
+    />
+  </div>
+
+  {/* Product Info */}
+  <h3 className="text-xl font-semibold text-gray-900">{product.name}</h3>
+  <p className="text-gray-700 mt-2 text-sm">{product.description}</p>
+
+  {/* Ratings and Action */}
+  <div className="flex items-center justify-between mt-4">
+    {/* Ratings */}
+    <div className="flex items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-5 h-5 text-yellow-500"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path d="M9.049 2.927C9.327 2.1 10.673 2.1 10.951 2.927l1.286 3.956a1 1 0 00.949.691h4.01c.916 0 1.302 1.176.588 1.706l-3.262 2.344a1 1 0 00-.364 1.118l1.287 3.956c.278.826-.695 1.51-1.41.999L10 13.347l-3.963 2.844c-.715.51-1.688-.173-1.41-.999l1.287-3.956a1 1 0 00-.364-1.118L2.288 8.58c-.714-.53-.328-1.706.588-1.706h4.01a1 1 0 00.949-.691l1.286-3.956z" />
+      </svg>
+      <span className="ml-1 text-gray-600 text-sm">4.9</span>
+    </div>
+
+    {/* Add to Cart Button */}
+    <button
+      className="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all duration-300"
+      onClick={() => alert(`Added ${product.name} to cart!`)}
+    >
+      Add to Cart
+    </button>
+  </div>
+</div>
+
             ))}
           </div>
 
@@ -100,7 +130,7 @@ export default function Home() {
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
                     className="w-full h-full object-cover rounded-lg shadow-md"
-                    style={{width:"192px",marginLeft:"24%"}}
+                    style={{ width: "192px", marginLeft: "24%" }}
                   />
                 </div>
                 <p className="text-gray-700 mb-4">{selectedProduct.description}</p>

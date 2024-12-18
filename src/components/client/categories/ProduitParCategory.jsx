@@ -1,32 +1,82 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Modal from './Modal';
+import './ProduitParCategory.css';
+
 export const ProduitParCategory = () => {
+  const { idproduit } = useParams();
+  const [produits, setProduits] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-    const {idproduit} = useParams()
-    console.log('id produit', idproduit)
-
-    ///productsbyCat/:category
-const [produitParCatg,setProduitParCat]=useState()
-
-async function fetchProducts(idproduit) {
-    const res = await axios.get(`http://localhost:4000/product/productsbyCat/${idproduit}`);
-    console.log('product par categorie ',res.data)
-    if (res) {
-        // setProduitParCat(res.data);
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`http://localhost:4000/product/productsbyCat/${idproduit}`);
+      setProduits(res.data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setLoading(false);
     }
-  }  
+  };
 
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
 
-useEffect(()=>{
-    fetchProducts()
-},[idproduit])
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
+  useEffect(() => {
+    if (idproduit) {
+      fetchProducts();
+    }
+  }, [idproduit]);
 
   return (
-    <div>
+    
+    <div className="produits-category-container">
+      <h1 className="text-center">Products for this Category</h1>
 
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="produits-grid">
+          {produits.length > 0 ? (
+            produits.map((produit) => (
+              <div
+                key={produit._id}
+                className="product-card"
+                onClick={() => openModal(produit)}
+              >
+                <img
+                  src={produit.imageUrl}
+                  alt={produit.name}
+                  className="product-image"
+                />
+                <div className="product-details">
+                  <h3 className="product-name">{produit.name}</h3>
+                  <p className="product-price">${produit.price}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>No products available for this category.</p>
+          )}
+        </div>
+      )}
 
-
+      <Modal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        product={selectedProduct}
+      />
     </div>
-  )
-}
+  );
+};

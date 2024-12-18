@@ -1,35 +1,16 @@
-.categories-container {
-  padding: 52px;
-}
+/* Category.css */
 
-.grid-container {
-  display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
+/* Optional - Smooth transition for the category card hover */
 .category-card {
-  display: block;
-  text-decoration: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.category-img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
-.category-title {
-  text-align: center;
-  font-size: 16px;
-  color: #333;
-  padding: 8px 0;
+/* Optional - Category card image hover effect */
+.category-card:hover .category-img {
+  filter: brightness(0.7); /* Darken image on hover */
 }

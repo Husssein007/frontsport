@@ -15,6 +15,8 @@ import Profile from "./components/client/Profil/Profile";
 import Product from "./components/client/products/Product";
 import AdminMessages from "./components/admin/message/Message";
 import { ProduitParCategory } from "./components/client/categories/ProduitParCategory";
+import ProductDetail from "./components/client/categories/ProductDetail";
+import Community from "./components/LandingPage/components/Community";
 
 function App() {
   const location = useLocation();
@@ -43,8 +45,11 @@ function App() {
           <Route path="/shop/:idproduit" element={<ProduitParCategory/>}/>
           <Route path="/shop" element={<Shop />} />
           <Route path="/adminMessage" element={<AdminMessages />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="/community" element={<Community />} />
+
         </Routes>
-      </main>
+      </main> 
 
       <Footer />
     </div>

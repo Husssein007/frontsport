@@ -1,0 +1,5 @@
+/* Optional - add a light border around product cards */
+.product-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  

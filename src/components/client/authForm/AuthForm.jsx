@@ -56,28 +56,28 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-red-50 to-red-200 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
+    <div className="min-h-screen bg-gradient-to-r from-gray-900 via-black to-gray-800 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
       {/* Background Image */}
       <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0">
         <img
           src="https://i.pinimg.com/736x/71/db/ca/71dbca59fc462a71f893a125bd59a9e0.jpg"
           alt="Background"
-          className="w-full h-full object-cover blur-sm opacity-50"
+          className="w-full h-full object-cover blur-sm opacity-40"
         />
       </div>
 
-      <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md bg-white rounded-lg shadow-lg p-8">
+      <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md bg-white rounded-lg shadow-xl p-8 space-y-6">
         <div className="flex justify-center">
-          <LogIn className="h-12 w-12 text-red-600" />
+          <LogIn className="h-12 w-12 text-black" />
         </div>
-        <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-semibold text-gray-900">
           Sign in to your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Don't have an account?{' '}
           <Link
             to="/signup"
-            className="font-medium text-red-600 hover:text-red-500"
+            className="font-medium text-black hover:text-gray-800 transition-all"
           >
             Sign up
           </Link>
@@ -85,7 +85,7 @@ export default function SignIn() {
 
         <form>
           <div className="mt-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-800">
               Email Address
             </label>
             <div className="mt-1 relative">
@@ -94,7 +94,7 @@ export default function SignIn() {
                 type="email"
                 value={state.email}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-red-500 focus:border-red-500"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-black focus:border-black"
                 placeholder="Enter your email"
                 aria-label="Email"
               />
@@ -103,7 +103,7 @@ export default function SignIn() {
           </div>
 
           <div className="mt-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-800">
               Password
             </label>
             <div className="mt-1 relative">
@@ -112,7 +112,7 @@ export default function SignIn() {
                 type={showPassword ? 'text' : 'password'}
                 value={state.password}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-red-500 focus:border-red-500"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-black focus:border-black"
                 placeholder="Enter your password"
                 aria-label="Password"
               />
@@ -134,7 +134,7 @@ export default function SignIn() {
           <button
             type="button"
             onClick={submit}
-            className="mt-6 w-full flex justify-center py-2 px-4 bg-red-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50"
+            className="mt-6 w-full flex justify-center py-3 px-4 bg-black text-white text-sm font-medium rounded-md shadow-sm hover:bg-gray-800 focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50"
             disabled={loading}
           >
             {loading ? 'Signing In...' : 'Sign In'}

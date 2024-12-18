@@ -9,6 +9,9 @@ function Hero() {
         <Link to="/login">
   <button className="cta-button">Shop Now</button>
 </Link>
+<Link to="/community">
+  <button className="cta-button">COMMUNITY</button>
+</Link>
  
       </div>
     </section>

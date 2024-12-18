@@ -50,27 +50,27 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-red-50 to-red-200 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
+    <div className="min-h-screen bg-gradient-to-r from-gray-800 via-black to-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
       <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0">
         <img
           src="https://i.pinimg.com/736x/71/db/ca/71dbca59fc462a71f893a125bd59a9e0.jpg"
           alt="Background"
-          className="w-full h-full object-cover blur-sm opacity-50"
+          className="w-full h-full object-cover blur-sm opacity-40"
         />
       </div>
 
-      <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md bg-white rounded-lg shadow-lg p-8">
+      <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md bg-white rounded-lg shadow-xl p-8 space-y-6">
         <div className="flex justify-center">
-          <UserPlus className="h-12 w-12 text-red-600" />
+          <UserPlus className="h-12 w-12 text-gray-800" />
         </div>
-        <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-semibold text-gray-900">
           Create your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Already have an account?{' '}
           <Link
             to="/login"
-            className="font-medium text-red-600 hover:text-red-500"
+            className="font-medium text-gray-800 hover:text-gray-600 transition-all"
           >
             Sign in
           </Link>
@@ -78,49 +78,45 @@ export default function SignUp() {
 
         <form>
           <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Full Name
-            </label>
+            <label className="block text-sm font-medium text-gray-800">Full Name</label>
             <input
               name="name"
               type="text"
               value={userData.name}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${
+              className={`mt-1 block w-full px-4 py-3 border ${
                 errors.name ? 'border-red-500' : 'border-gray-300'
-              } rounded-md shadow-sm focus:ring-red-500 focus:border-red-500`}
+              } rounded-md shadow-sm focus:ring-black focus:border-black focus:outline-none`}
               placeholder="Enter your full name"
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
 
           <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Email Address
-            </label>
+            <label className="block text-sm font-medium text-gray-800">Email Address</label>
             <input
               name="email"
               type="email"
               value={userData.email}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${
+              className={`mt-1 block w-full px-4 py-3 border ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
-              } rounded-md shadow-sm focus:ring-red-500 focus:border-red-500`}
+              } rounded-md shadow-sm focus:ring-black focus:border-black focus:outline-none`}
               placeholder="Enter your email"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
           <div className="mt-4 relative">
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className="block text-sm font-medium text-gray-800">Password</label>
             <input
               name="password"
               type={showPassword ? 'text' : 'password'}
               value={userData.password}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${
+              className={`mt-1 block w-full px-4 py-3 border ${
                 errors.password ? 'border-red-500' : 'border-gray-300'
-              } rounded-md shadow-sm focus:ring-red-500 focus:border-red-500`}
+              } rounded-md shadow-sm focus:ring-black focus:border-black focus:outline-none`}
               placeholder="Enter your password"
             />
             <div
@@ -133,17 +129,15 @@ export default function SignUp() {
           </div>
 
           <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Confirm Password
-            </label>
+            <label className="block text-sm font-medium text-gray-800">Confirm Password</label>
             <input
               name="confirmPassword"
               type="password"
               value={userData.confirmPassword}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${
+              className={`mt-1 block w-full px-4 py-3 border ${
                 errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
-              } rounded-md shadow-sm focus:ring-red-500 focus:border-red-500`}
+              } rounded-md shadow-sm focus:ring-black focus:border-black focus:outline-none`}
               placeholder="Re-enter your password"
             />
             {errors.confirmPassword && (
@@ -154,7 +148,7 @@ export default function SignUp() {
           <button
             type="button"
             onClick={submit}
-            className="mt-6 w-full flex justify-center py-2 px-4 bg-red-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition transform hover:scale-105"
+            className="mt-6 w-full flex justify-center py-3 px-4 bg-black text-white text-sm font-medium rounded-md shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transition transform hover:scale-105"
           >
             Sign Up
           </button>

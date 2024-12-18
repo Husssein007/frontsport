@@ -5,35 +5,49 @@ import "./Category.css";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
-const  fetchCategories=async()=> {
-  try {
-    const response = await axios.get("http://localhost:4000/categories/");
-    setCategories(response.data);
-    console.log("Categories: ", response.data);
-  } catch (error) {
-    console.error("Failed to fetch categories", error);
-  }
-}
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/categories/");
+      setCategories(response.data);
+      console.log("Categories: ", response.data);
+    } catch (error) {
+      console.error("Failed to fetch categories", error);
+    }
+  };
+
   useEffect(() => {
     fetchCategories();
   }, []);
-console.log('categorie product',categories)
+
+  console.log("categorie product", categories);
+
   return (
-    <div className="categories-container">
-      <h1 className="text-center text-4xl font-extrabold text-gradient bg-clip-text mb-6 transition-all duration-300 hover:text-yellow-500" style={{marginTop:"20px"}}>Categories</h1>
-      <div className="grid-container">
+    <div className="categories-container py-12 bg-black min-h-screen">
+      <h1 className="text-center text-3xl font-bold text-white tracking-wide uppercase mt-6 mb-6">
+      Shop By Category
+      </h1>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-16">
         {categories.map((category) => (
           <Link
-            key={category.id}
+            key={category._id}
             to={`/shop/${category._id}`}
-            className="category-card"
+            className="category-card relative overflow-hidden rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
           >
             <img
               src={category.imageUrl}
               alt={category.name}
-              className="category-img"
+              className="category-img w-full h-56 object-cover rounded-t-lg"
             />
-            <h2 className="category-title">{category.name}</h2>
+            <div className="p-4 bg-black">
+              <h2 className="category-title text-xl font-semibold text-white text-center uppercase">
+                {category.name}
+              </h2>
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+              <p className="text-white text-lg font-semibold">Shop {category.name}</p>
+            </div>
           </Link>
         ))}
       </div>
